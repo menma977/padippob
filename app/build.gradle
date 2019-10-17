@@ -11,8 +11,8 @@ android {
         applicationId "com.padippob"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 9
-        versionName "1.1.93"
+        versionCode 10
+        versionName "1.1.931"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
