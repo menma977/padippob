@@ -123,14 +123,12 @@ class PostPaidActivity : AppCompatActivity() {
                                             .replace("THREE", "")
                                             .replace("CERIA", "")
                                         }.000")
-                                        //productCodeArrayList.add(arrayProduct.getJSONObject(value).get("code").toString())
                                         productCodeArrayList.add(arrayProduct.getJSONObject(value).get("code").toString()
                                         )
                                     }
                                 } else {
                                     if (arrayProduct.getJSONObject(value).get("typeProduct").toString() == "DATA") {
                                         productNameArrayList.add(arrayProduct.getJSONObject(value).get("name").toString())
-                                        //productCodeArrayList.add(arrayProduct.getJSONObject(value).get("code").toString())
                                         productCodeArrayList.add(arrayProduct.getJSONObject(value).get("code").toString()
                                         )
                                     }
@@ -171,7 +169,6 @@ class PostPaidActivity : AppCompatActivity() {
                                     .replace("THREE", "")
                                     .replace("CERIA", "")
                                 }.000")
-                                //productCodeArrayList.add(arrayProduct.getJSONObject(value).get("code").toString())
                                 productCodeArrayList.add(arrayProduct.getJSONObject(value).get("code").toString()
                                 )
                             }
@@ -203,7 +200,6 @@ class PostPaidActivity : AppCompatActivity() {
                         for (value in 0 until arrayProduct.length() - 1) {
                             if (arrayProduct.getJSONObject(value).get("typeProduct").toString() == "DATA") {
                                 productNameArrayList.add(arrayProduct.getJSONObject(value).get("name").toString())
-                                //productCodeArrayList.add(arrayProduct.getJSONObject(value).get("code").toString())
                                 productCodeArrayList.add(arrayProduct.getJSONObject(value).get("code").toString()
                                 )
                             }
