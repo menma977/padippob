@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dist="http://schemas.android.com/apk/distribution"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.padippob">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <dist:module dist:instant="true" />
+
+    <application
+        android:allowBackup="true"
+        android:fullBackupContent="@xml/backup_descriptor"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".menu.WebViewActivity"
+            android:theme="@style/AppThemeNoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuActivity" />
+        </activity>
+        <activity
+            android:name=".ppob.payment.PaymentValidationActivity"
+            android:label="payment"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ppob.payment.PaymentActivity" />
+        </activity>
+        <activity
+            android:name=".ppob.payment.PaymentActivity"
+            android:label="Payment"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuActivity" />
+        </activity>
+        <activity
+            android:name=".ppob.multyFinance.MultiFinanceValidationActivity"
+            android:label="Multy Finance"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ppob.multyFinance.MultiFinanceActivity" />
+        </activity>
+        <activity
+            android:name=".ppob.multyFinance.MultiFinanceActivity"
+            android:label="Multy Finance"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuActivity" />
+        </activity>
+        <activity
+            android:name=".ppob.insurance.InsuranceValidationActivity"
+            android:label="Asuransi"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ppob.insurance.InsuranceActivity" />
+        </activity>
+        <activity
+            android:name=".ppob.insurance.InsuranceActivity"
+            android:label="Asuransi"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuActivity" />
+        </activity>
+        <activity
+            android:name=".ppob.tap_cash_bni.TapCashBNIValidationActivity"
+            android:label="Tap Cash BNI"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ppob.tap_cash_bni.TapCashBNIActivity" />
+        </activity>
+        <activity
+            android:name=".ppob.tap_cash_bni.TapCashBNIActivity"
+            android:label="Tap Cash BNI"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuActivity" />
+        </activity>
+        <activity
+            android:name=".ppob.e_money_mandiri.EMoneyMandiriValidationActivity"
+            android:label="E-Money Mandiri"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ppob.e_money_mandiri.EMoneyMandiriActivity" />
+        </activity>
+        <activity
+            android:name=".ppob.e_money_mandiri.EMoneyMandiriActivity"
+            android:label="E-Money Mandiri"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuActivity" />
+        </activity>
+        <activity
+            android:name=".ppob.wifi.WifiValidationActivity"
+            android:label="WIFI"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ppob.wifi.WifiActivity" />
+        </activity>
+        <activity
+            android:name=".ppob.wifi.WifiActivity"
+            android:label="WIFI"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuActivity" />
+        </activity>
+        <activity
+            android:name=".ppob.pdam.PDAMValidationActivity"
+            android:label="PDAM"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ppob.pdam.PDAMActivity" />
+        </activity>
+        <activity
+            android:name=".ppob.pdam.PDAMActivity"
+            android:label="PDAM"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuActivity" />
+        </activity>
+        <activity
+            android:name=".ppob.ovo.OvoValidationActivity"
+            android:label="OVO"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ppob.ovo.OvoActivity" />
+        </activity>
+        <activity
+            android:name=".ppob.ovo.OvoActivity"
+            android:label="OVO"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuActivity" />
+        </activity>
+        <activity
+            android:name=".ppob.grab.GrabValidationActivity"
+            android:label="GRAB"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ppob.grab.GrabActivity" />
+        </activity>
+        <activity
+            android:name=".ppob.grab.GrabActivity"
+            android:label="GRAB"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuActivity" />
+        </activity>
+        <activity
+            android:name=".ppob.go_pay.GoPayValidationActivity"
+            android:label="GO-Pay"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ppob.go_pay.GoPayActivity" />
+        </activity>
+        <activity
+            android:name=".ppob.go_pay.GoPayActivity"
+            android:label="GO-Pay"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuActivity" />
+        </activity>
+        <activity
+            android:name=".ppob.dana.DanaValidationActivity"
+            android:label="DANA"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ppob.dana.DanaActivity" />
+        </activity>
+        <activity
+            android:name=".ppob.dana.DanaActivity"
+            android:label="DANA"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuActivity" />
+        </activity>
+        <activity
+            android:name=".ppob.bpjs.BPJSValidationActivity"
+            android:label="BPJS"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ppob.bpjs.BPJSActivity" />
+        </activity>
+        <activity
+            android:name=".ppob.bpjs.BPJSActivity"
+            android:label="BPJS"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuActivity" />
+        </activity>
+        <activity
+            android:name=".ppob.plnCredit.PLNCreditValidationActivity"
+            android:label="PLN Pascabayar"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ppob.plnCredit.PLNCreditActivity" />
+        </activity>
+        <activity
+            android:name=".ppob.plnCredit.PLNCreditActivity"
+            android:label="PLN Pascabayar"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuActivity" />
+        </activity>
+        <activity
+            android:name=".ppob.pln.PLNValidationActivity"
+            android:label="PLN"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ppob.pln.PLNActivity" />
+        </activity>
+        <activity
+            android:name=".ppob.pln.PLNActivity"
+            android:label="PLN"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuActivity" />
+        </activity>
+        <activity
+            android:name=".ppob.postPaidCredit.PostPaidCreditValidationActivity"
+            android:label="Pulsa Pascabayar"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ppob.postPaidCredit.PostPaidCreditActivity" />
+        </activity>
+        <activity
+            android:name=".ppob.postPaidCredit.PostPaidCreditActivity"
+            android:label="Pulsa Pascabayar"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuActivity" />
+        </activity>
+        <activity
+            android:name=".ppob.postPaid.PostPaidValidationActivity"
+            android:label="Pulsa Prabayar"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ppob.postPaid.PostPaidActivity" />
+        </activity>
+        <activity
+            android:name=".ppob.postPaid.PostPaidActivity"
+            android:label="Pulsa Prabayar"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuActivity" />
+        </activity>
+        <activity android:name=".FinancialActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuActivity" />
+        </activity>
+        <activity
+            android:name=".menu.TopUpActivity"
+            android:label="Top Up PPOB"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuActivity" />
+        </activity>
+        <activity
+            android:name=".MenuActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".controller.ProgressBar"
+            android:theme="@style/AppThemeNoActionBar" />
+        <activity
+            android:name=".SendPassword"
+            android:theme="@style/AppThemeNoActionBar" />
+        <activity
+            android:name=".Validation"
+            android:theme="@style/AppThemeNoActionBar" />
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppThemeNoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

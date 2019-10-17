@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_print_black_24dp"
+        android:title="@string/menu_ppob" />
+
+    <item
+        android:id="@+id/navigation_menu"
+        android:icon="@drawable/ic_view_comfy"
+        android:title="@string/menu" />
+
+    <item
+        android:id="@+id/navigation_logout"
+        android:icon="@drawable/ic_power_settings_new"
+        android:title="@string/logout" />
+
+</menu>
