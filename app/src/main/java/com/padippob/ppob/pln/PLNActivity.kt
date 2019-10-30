@@ -62,7 +62,6 @@ class PLNActivity : AppCompatActivity() {
                 if (parent.count > 1) {
                     type = arrayCodeProduct[position]
                 }
-
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}

@@ -30,7 +30,8 @@ class MainActivity : AppCompatActivity() {
 
         if (userSession.getString("username").toString().isNotEmpty()
             && userSession.getString("passowrd").toString().isNotEmpty()
-            && userSession.getString("code").toString().isNotEmpty()) {
+            && userSession.getString("code").toString().isNotEmpty()
+        ) {
             progressBar.openDialog()
             val goTo = Intent(this, MenuActivity::class.java)
             startActivity(goTo)
@@ -54,19 +55,25 @@ class MainActivity : AppCompatActivity() {
                             val goTo = Intent(this, Validation::class.java)
                             startActivity(goTo)
                         } else {
-                            Toast.makeText(this, response["Pesan"].toString(), Toast.LENGTH_LONG).show()
+                            Toast.makeText(this, response["Pesan"].toString(), Toast.LENGTH_LONG)
+                                .show()
                             progressBar.closeDialog()
                         }
                     } else {
-                        Toast.makeText(this, "password tidak boleh kosong", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, "password tidak boleh kosong", Toast.LENGTH_LONG)
+                            .show()
                         progressBar.closeDialog()
                     }
                 } else {
                     Toast.makeText(this, "username tidak boleh kosong", Toast.LENGTH_LONG).show()
                     progressBar.closeDialog()
                 }
-            }catch (e : Exception) {
-                Toast.makeText(this, "data yang terkirim tidak valid / internet tidak setabil", Toast.LENGTH_LONG).show()
+            } catch (e: Exception) {
+                Toast.makeText(
+                    this,
+                    "data yang terkirim tidak valid / internet tidak setabil",
+                    Toast.LENGTH_LONG
+                ).show()
                 progressBar.closeDialog()
             }
         }
@@ -80,10 +87,13 @@ class MainActivity : AppCompatActivity() {
         RegisterButton.setOnClickListener {
             progressBar.openDialog()
             try {
-                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.padippob.com/index.php/register"))
+                val browserIntent = Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://www.padippob.com/index.php/register")
+                )
                 startActivity(browserIntent)
                 progressBar.closeDialog()
-            }catch (e : Exception) {
+            } catch (e: Exception) {
                 progressBar.closeDialog()
             }
         }
@@ -106,19 +116,25 @@ class MainActivity : AppCompatActivity() {
                             val goTo = Intent(this, Validation::class.java)
                             startActivity(goTo)
                         } else {
-                            Toast.makeText(this, response["Pesan"].toString(), Toast.LENGTH_LONG).show()
+                            Toast.makeText(this, response["Pesan"].toString(), Toast.LENGTH_LONG)
+                                .show()
                             progressBar.closeDialog()
                         }
                     } else {
-                        Toast.makeText(this, "password tidak boleh kosong", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, "password tidak boleh kosong", Toast.LENGTH_LONG)
+                            .show()
                         progressBar.closeDialog()
                     }
                 } else {
                     Toast.makeText(this, "username tidak boleh kosong", Toast.LENGTH_LONG).show()
                     progressBar.closeDialog()
                 }
-            }catch (e : Exception) {
-                Toast.makeText(this, "data yang terkirim tidak valid / internet tidak setabil", Toast.LENGTH_LONG).show()
+            } catch (e: Exception) {
+                Toast.makeText(
+                    this,
+                    "data yang terkirim tidak valid / internet tidak setabil",
+                    Toast.LENGTH_LONG
+                ).show()
                 progressBar.closeDialog()
             }
         }
@@ -126,8 +142,35 @@ class MainActivity : AppCompatActivity() {
 
     @TargetApi(Build.VERSION_CODES.M)
     private fun doRequestPermission() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(arrayOf(Manifest.permission.INTERNET), 100)
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.INTERNET
+            ) != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.CAMERA
+            ) != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            ) != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            requestPermissions(
+                arrayOf(
+                    Manifest.permission.INTERNET,
+                    Manifest.permission.CAMERA,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    Manifest.permission.READ_EXTERNAL_STORAGE
+                ), 100
+            )
+            val session = UserSession(this)
+            session.saveString("username", "")
+            session.saveString("password", "")
+            session.saveString("code", "")
+            session.saveInteger("balance", 0)
+            session.saveString("ktp", "")
+            session.saveString("selfAndKTP", "")
         }
     }
 }

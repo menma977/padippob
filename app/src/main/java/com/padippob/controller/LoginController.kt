@@ -12,9 +12,10 @@ import java.lang.Exception
 import java.net.HttpURLConnection
 import java.net.URL
 
-class LoginController(context : Context) : AsyncTask<Void, Void, JSONObject>() {
+class LoginController(context: Context) : AsyncTask<Void, Void, JSONObject>() {
     @SuppressLint("StaticFieldLeak")
     private val thisContext = context
+
     override fun doInBackground(vararg params: Void?): JSONObject {
         try {
             val userSession = UserSession(thisContext)
@@ -28,7 +29,10 @@ class LoginController(context : Context) : AsyncTask<Void, Void, JSONObject>() {
             httpURLConnection.setRequestProperty("Accept-Language", "en-US,en;q=0.5")
             httpURLConnection.setRequestProperty("Accept", "application/json")
 
-            val urlParameters = "a=ReqLogin&username=${userSession.getString("username")}&password=${userSession.getString("password")}"
+            val urlParameters =
+                "a=ReqLogin&username=${userSession.getString("username")}&password=${userSession.getString(
+                    "password"
+                )}"
 
             // Send post request
             httpURLConnection.doOutput = true
@@ -50,7 +54,7 @@ class LoginController(context : Context) : AsyncTask<Void, Void, JSONObject>() {
             } else {
                 return JSONObject("{Status: 1, Pesan: 'internet tidak setabil'}")
             }
-        }catch (e : Exception) {
+        } catch (e: Exception) {
             e.printStackTrace()
             return JSONObject("{Status: 1, Pesan: 'internet tidak setabil'}")
         }

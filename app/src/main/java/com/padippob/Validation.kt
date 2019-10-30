@@ -21,13 +21,18 @@ class Validation : AppCompatActivity() {
         LoginButton.setOnClickListener {
             progressBar.openDialog()
             if (PasswordTextView.text.toString().isNotEmpty()) {
-                val validationController = ValidationController(userSession.getString("username").toString(), PasswordTextView.text.toString()).execute()
+                val validationController = ValidationController(
+                    userSession.getString("username").toString(),
+                    PasswordTextView.text.toString()
+                ).execute()
                 val response = validationController.get()
                 println(response)
                 if (response["Status"].toString() == "0") {
                     userSession.saveString("code", response["IdLogin"].toString())
                     userSession.saveString("apiKey", response["IdLogin"].toString())
                     userSession.saveString("idUser", response["IdUser"].toString())
+                    userSession.saveString("ktp", response["ktp"].toString())
+                    userSession.saveString("selfAndKTP", response["selfKTP"].toString())
                     progressBar.closeDialog()
                     val goTo = Intent(this, MenuActivity::class.java)
                     startActivity(goTo)
@@ -45,7 +50,10 @@ class Validation : AppCompatActivity() {
         PasswordTextView.setOnClickListener {
             progressBar.openDialog()
             if (PasswordTextView.text.toString().isNotEmpty()) {
-                val validationController = ValidationController(userSession.getString("username").toString(), PasswordTextView.text.toString()).execute()
+                val validationController = ValidationController(
+                    userSession.getString("username").toString(),
+                    PasswordTextView.text.toString()
+                ).execute()
                 val response = validationController.get()
                 println(response)
                 if (response["Status"].toString() == "0") {
