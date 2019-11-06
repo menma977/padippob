@@ -10,7 +10,8 @@ import java.lang.Exception
 import java.net.HttpURLConnection
 import java.net.URL
 
-class ProductController(private val username : String, private val code : String) : AsyncTask<Void, Void, JSONArray>() {
+class ProductController(private val username: String, private val code: String) :
+    AsyncTask<Void, Void, JSONArray>() {
     override fun doInBackground(vararg params: Void?): JSONArray {
         try {
             val userAgent = "Mozilla/5.0"
@@ -42,10 +43,10 @@ class ProductController(private val username : String, private val code : String
                 val jsonObject = JSONArray()
                 var subJsonObject: JSONObject
                 val arrayList = ArrayList<JSONObject>()
-                var code : String
-                var name : String
-                var operator : String
-                var typeProduct : String
+                var code: String
+                var name: String
+                var operator: String
+                var typeProduct: String
                 jsonObject.put(JSONObject("{Status : 1}"))
 
                 for (value in 0 until response.length()) {
@@ -68,14 +69,13 @@ class ProductController(private val username : String, private val code : String
                     jsonObject.getJSONObject(0).put(name.toString(), JSONArray(group.toString()))
                     index++
                 }
-                //println(jsonObject.getJSONObject(0).getJSONArray("XL").getJSONObject(0).get("code"))
                 input.close()
                 jsonObject
             } else {
                 val jsonArray = JSONArray()
                 jsonArray.put(1)
             }
-        }catch (e : Exception) {
+        } catch (e: Exception) {
             e.printStackTrace()
             val jsonArray = JSONArray()
             return jsonArray.put(1)
