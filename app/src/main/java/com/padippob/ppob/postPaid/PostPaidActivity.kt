@@ -55,7 +55,8 @@ class PostPaidActivity : AppCompatActivity() {
 
         val idr = Locale("in", "ID")
         val numberFormat = NumberFormat.getCurrencyInstance(idr)
-        BalanceTextView.text = "Saldo anda saat ini : ${numberFormat.format(userSession.getInteger("balance"))}"
+        BalanceTextView.text =
+            "Saldo anda saat ini : ${numberFormat.format(userSession.getInteger("balance"))}"
 
         val hlrController = HlrController(
             userSession.getString("username").toString(),
@@ -75,10 +76,11 @@ class PostPaidActivity : AppCompatActivity() {
         ).execute()
         val responseProduct = productController.get()
 
-        var productNameArrayList =ArrayList<String>()
-        var productCodeArrayList =ArrayList<String>()
+        var productNameArrayList = ArrayList<String>()
+        var productCodeArrayList = ArrayList<String>()
         productNameArrayList.add("Mohon isikan nomor terlebih dahulu")
-        var spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, productNameArrayList)
+        var spinnerAdapter =
+            ArrayAdapter(this, android.R.layout.simple_spinner_item, productNameArrayList)
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line)
         ProductSpinner.adapter = spinnerAdapter
 
@@ -93,7 +95,7 @@ class PostPaidActivity : AppCompatActivity() {
         val jsonConverterProductName = responseProduct.getJSONObject(0)
 
         PhoneNumberEditText.doOnTextChanged { text, _, _, _ ->
-            val arrayResponse = arrayList.find { it["Hlr"].toString() == text.toString()}
+            val arrayResponse = arrayList.find { it["Hlr"].toString() == text.toString() }
             if (text.toString().length <= 4) {
                 operator = arrayResponse?.get("Operator").toString()
                 try {
@@ -107,34 +109,49 @@ class PostPaidActivity : AppCompatActivity() {
                         else -> LogoImageView.setImageResource(R.mipmap.ic_launcher_foreground)
                     }
 
-                    if (!arrayResponse?.get("Operator")?.toString().isNullOrEmpty() && arrayResponse?.get("Operator")?.toString() != "Default") {
+                    if (!arrayResponse?.get("Operator")?.toString().isNullOrEmpty() && arrayResponse?.get(
+                            "Operator"
+                        )?.toString() != "Default"
+                    ) {
                         if (operator != "Default" && operator.isNotEmpty()) {
                             val arrayProduct = jsonConverterProductName.getJSONArray(operator)
                             productNameArrayList = ArrayList()
                             for (value in 0 until arrayProduct.length() - 1) {
                                 if (PostPaidButton.isChecked) {
                                     if (arrayProduct.getJSONObject(value).get("typeProduct").toString() == "REGULER") {
-                                        productNameArrayList.add("Rp${arrayProduct.getJSONObject(value).get("code").toString()
-                                            .replace("TELKOMSEL", "")
-                                            .replace("INDOSAT", "")
-                                            .replace("XL", "")
-                                            .replace("AXIS", "")
-                                            .replace("SMART", "")
-                                            .replace("THREE", "")
-                                            .replace("CERIA", "")
-                                        }.000")
-                                        productCodeArrayList.add(arrayProduct.getJSONObject(value).get("code").toString()
+                                        productNameArrayList.add(
+                                            "Rp${arrayProduct.getJSONObject(value).get("code").toString()
+                                                .replace("TELKOMSEL", "")
+                                                .replace("INDOSAT", "")
+                                                .replace("XL", "")
+                                                .replace("AXIS", "")
+                                                .replace("SMART", "")
+                                                .replace("THREE", "")
+                                                .replace("CERIA", "")
+                                            }.000"
+                                        )
+                                        productCodeArrayList.add(
+                                            arrayProduct.getJSONObject(value).get("code").toString()
                                         )
                                     }
                                 } else {
                                     if (arrayProduct.getJSONObject(value).get("typeProduct").toString() == "DATA") {
-                                        productNameArrayList.add(arrayProduct.getJSONObject(value).get("name").toString())
-                                        productCodeArrayList.add(arrayProduct.getJSONObject(value).get("code").toString()
+                                        productNameArrayList.add(
+                                            arrayProduct.getJSONObject(value).get(
+                                                "name"
+                                            ).toString()
+                                        )
+                                        productCodeArrayList.add(
+                                            arrayProduct.getJSONObject(value).get("code").toString()
                                         )
                                     }
                                 }
                             }
-                            spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, productNameArrayList)
+                            spinnerAdapter = ArrayAdapter(
+                                this,
+                                android.R.layout.simple_spinner_item,
+                                productNameArrayList
+                            )
                             spinnerAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line)
                             ProductSpinner.adapter = spinnerAdapter
                         }
@@ -142,11 +159,15 @@ class PostPaidActivity : AppCompatActivity() {
                         productNameArrayList = ArrayList()
                         productCodeArrayList = ArrayList()
                         productNameArrayList.add("Nomor yang anda inputkan tidak valid")
-                        spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, productNameArrayList)
+                        spinnerAdapter = ArrayAdapter(
+                            this,
+                            android.R.layout.simple_spinner_item,
+                            productNameArrayList
+                        )
                         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line)
                         ProductSpinner.adapter = spinnerAdapter
                     }
-                } catch (e : Exception) {
+                } catch (e: Exception) {
                     e.printStackTrace()
                 }
             }
@@ -160,33 +181,44 @@ class PostPaidActivity : AppCompatActivity() {
                     if (PostPaidButton.isChecked) {
                         for (value in 0 until arrayProduct.length() - 1) {
                             if (arrayProduct.getJSONObject(value).get("typeProduct").toString() == "REGULER") {
-                                productNameArrayList.add("Rp${arrayProduct.getJSONObject(value).get("code").toString()
-                                    .replace("TELKOMSEL", "")
-                                    .replace("INDOSAT", "")
-                                    .replace("XL", "")
-                                    .replace("AXIS", "")
-                                    .replace("SMART", "")
-                                    .replace("THREE", "")
-                                    .replace("CERIA", "")
-                                }.000")
-                                productCodeArrayList.add(arrayProduct.getJSONObject(value).get("code").toString()
+                                productNameArrayList.add(
+                                    "Rp${arrayProduct.getJSONObject(value).get("code").toString()
+                                        .replace("TELKOMSEL", "")
+                                        .replace("INDOSAT", "")
+                                        .replace("XL", "")
+                                        .replace("AXIS", "")
+                                        .replace("SMART", "")
+                                        .replace("THREE", "")
+                                        .replace("CERIA", "")
+                                    }.000"
+                                )
+                                productCodeArrayList.add(
+                                    arrayProduct.getJSONObject(value).get("code").toString()
                                 )
                             }
                         }
                     }
                     type = ""
-                    spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, productNameArrayList)
+                    spinnerAdapter = ArrayAdapter(
+                        this,
+                        android.R.layout.simple_spinner_item,
+                        productNameArrayList
+                    )
                     spinnerAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line)
                     ProductSpinner.adapter = spinnerAdapter
                 } else {
                     productNameArrayList = ArrayList()
                     productCodeArrayList = ArrayList()
                     productNameArrayList.add("Nomor yang anda inputkan tidak valid")
-                    spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, productNameArrayList)
+                    spinnerAdapter = ArrayAdapter(
+                        this,
+                        android.R.layout.simple_spinner_item,
+                        productNameArrayList
+                    )
                     spinnerAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line)
                     ProductSpinner.adapter = spinnerAdapter
                 }
-            } catch (e : Exception) {
+            } catch (e: Exception) {
                 e.printStackTrace()
             }
         }
@@ -200,30 +232,44 @@ class PostPaidActivity : AppCompatActivity() {
                         for (value in 0 until arrayProduct.length() - 1) {
                             if (arrayProduct.getJSONObject(value).get("typeProduct").toString() == "DATA") {
                                 productNameArrayList.add(arrayProduct.getJSONObject(value).get("name").toString())
-                                productCodeArrayList.add(arrayProduct.getJSONObject(value).get("code").toString()
+                                productCodeArrayList.add(
+                                    arrayProduct.getJSONObject(value).get("code").toString()
                                 )
                             }
                         }
                     }
                     type = "DATA"
-                    spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, productNameArrayList)
+                    spinnerAdapter = ArrayAdapter(
+                        this,
+                        android.R.layout.simple_spinner_item,
+                        productNameArrayList
+                    )
                     spinnerAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line)
                     ProductSpinner.adapter = spinnerAdapter
                 } else {
                     productNameArrayList = ArrayList()
                     productCodeArrayList = ArrayList()
                     productNameArrayList.add("Nomor yang anda inputkan tidak valid")
-                    spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, productNameArrayList)
+                    spinnerAdapter = ArrayAdapter(
+                        this,
+                        android.R.layout.simple_spinner_item,
+                        productNameArrayList
+                    )
                     spinnerAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line)
                     ProductSpinner.adapter = spinnerAdapter
                 }
-            } catch (e : Exception) {
+            } catch (e: Exception) {
                 e.printStackTrace()
             }
         }
 
         ProductSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View,
+                position: Int,
+                id: Long
+            ) {
                 if (parent.count > 1) {
                     nominal = productCodeArrayList[position]
                 }
@@ -241,15 +287,22 @@ class PostPaidActivity : AppCompatActivity() {
                 onRequestPayment(
                     userSession.getString("username").toString(),
                     userSession.getString("code").toString(),
-                    PhoneNumberEditText.text.toString().replace("-", "").replace("+62", "0").replace(" ", ""),
+                    PhoneNumberEditText.text.toString().replace("-", "").replace(
+                        "+62",
+                        "0"
+                    ).replace(" ", ""),
                     nominal,
                     type
                 )
                 Handler().postDelayed({
                     progressBar.closeDialog()
                 }, 500)
-            } else if(PhoneNumberEditText.text.length < 10) {
-                Toast.makeText(this, "Nomoar Telfon yang anda inputkan kurang dari 10 digit.", Toast.LENGTH_LONG).show()
+            } else if (PhoneNumberEditText.text.length < 10) {
+                Toast.makeText(
+                    this,
+                    "Nomoar Telfon yang anda inputkan kurang dari 10 digit.",
+                    Toast.LENGTH_LONG
+                ).show()
                 Handler().postDelayed({
                     progressBar.closeDialog()
                 }, 500)
@@ -262,15 +315,28 @@ class PostPaidActivity : AppCompatActivity() {
         }
     }
 
-    private fun onRequestPayment(username : String, code : String, phone : String, nominal : String, type : String) {
+    private fun onRequestPayment(
+        username: String,
+        code: String,
+        phone: String,
+        nominal: String,
+        type: String
+    ) {
         try {
             val postPaidController = RequestPostPaid(username, code, phone, nominal, type).execute()
             val response = postPaidController.get()
             println(response)
             if (response["Status"].toString() == "1") {
-                Toast.makeText(this, "Transaksi dengan nominal no hp yang sama hanya bisa di lakukan 1x12jam. Gunakan nominal lain.", Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    this,
+                    "Transaksi dengan nominal no hp yang sama hanya bisa di lakukan 1x12jam. Gunakan nominal lain.",
+                    Toast.LENGTH_LONG
+                ).show()
             } else {
-                val goTo = Intent(this, PostPaidValidationActivity::class.java).putExtra("response", response.toString())
+                val goTo = Intent(this, PostPaidValidationActivity::class.java).putExtra(
+                    "response",
+                    response.toString()
+                )
                 startActivity(goTo)
             }
         } catch (e: Exception) {
